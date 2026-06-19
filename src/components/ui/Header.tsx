@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,10 +25,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <header
       className={cn(
@@ -40,34 +35,18 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
 
-          {/* Logo / Brand */}
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-3 text-left group"
-            aria-label="Scroll to top"
-          >
-            {!logoError ? (
-              <Image
-                src="/images/logo.png"
-                alt="Kalrav Children's Hospital Logo"
-                width={150}
-                height={50}
-                className="object-contain h-12 w-auto"
-                onError={() => setLogoError(true)}
-                priority
-              />
-            ) : (
-              /* Fallback text logo if image is missing */
-              <div className="flex flex-col text-left">
-                <span className="text-2xl font-bold text-sky-600 group-hover:text-sky-700 transition-colors leading-none">
-                  Kalrav
-                </span>
-                <span className="text-xs font-semibold text-slate-500 uppercase tracking-widest mt-0.5">
-                  Children&apos;s Hospital
-                </span>
-              </div>
-            )}
-          </button>
+          {/* CSS Logo */}
+          <Link href="/" className="flex items-center gap-3 group">
+            {/* Emblem */}
+            <div className="flex items-center justify-center w-11 h-11 bg-gradient-to-br from-blue-500 to-blue-700 text-white font-bold text-lg rounded-xl shadow-md transition-transform group-hover:scale-105">
+              KCH
+            </div>
+            {/* Typography */}
+            <div className="flex flex-col">
+              <span className="font-extrabold text-2xl text-slate-800 leading-none">Kalrav</span>
+              <span className="text-[10px] font-bold text-blue-600 tracking-widest uppercase mt-1">Children&apos;s Hospital</span>
+            </div>
+          </Link>
 
           {/* CTA Buttons */}
           <div className="flex items-center space-x-3 sm:space-x-4">
