@@ -57,9 +57,18 @@ export default function Footer() {
       <div className="border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-sm text-slate-500">
           <p>&copy; {currentYear} Kalrav Children&apos;s Hospital. All rights reserved.</p>
-          <p className="font-medium text-slate-400 tracking-wide">
-            Built by RNext.in
-          </p>
+          <div className="flex items-center text-slate-400">
+            <span className="hidden md:block mx-2 text-slate-500">•</span>
+            <p className="text-sm font-medium flex items-center gap-1.5">
+              Built by
+              <span className="relative group cursor-pointer ml-1">
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 tracking-wider transition-all duration-300 group-hover:from-blue-500 group-hover:to-indigo-500">
+                  RNext.in
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full rounded-full"></span>
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
