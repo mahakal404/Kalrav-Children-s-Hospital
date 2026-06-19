@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
+import UnregisterSW from "@/components/UnregisterSW";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,6 +27,7 @@ export default function RootLayout({
       className={`${inter.variable} scroll-smooth antialiased`}
     >
       <body className="min-h-screen flex flex-col font-sans">
+        <UnregisterSW />
         <Header />
         <main className="flex-grow pt-20">
           {children}
